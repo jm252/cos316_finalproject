@@ -1,0 +1,15 @@
+{
+    "manifest_version":3,
+    "version":"1.0",
+    "name":"COS316 Final Project",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "COS316 Final Project"
+    },
+    "content_scripts":[
+      {
+       "matches":["<all_urls>"],
+       "js":["main.js"]
+      }
+    ]
+  }
