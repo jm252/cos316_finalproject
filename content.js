@@ -1,3 +1,4 @@
 alert("The test extension is up and running")
 var pageTitle = document.title;
-console.log(pageTitle);
+var url = window.location.href
+console.log(url)
