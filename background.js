@@ -1,9 +1,12 @@
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  if (message.type === "contentScript") {
-    // Access the data sent from content script
-    var pageInfo = message.data;
-    console.log("Received information from content script:", pageInfo);
+// Listen for messages from content.js
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+      if (request.type === "urlChange") {
+          // Access the URL from the message
+          var url = request.url;
 
-    document.getElementById("title").innerHTML = pageInfo; 
+          // Now you can do something with the URL, such as storing it or processing it
+          console.log("URL changed to:", url);
+      }
   }
-});
+);
