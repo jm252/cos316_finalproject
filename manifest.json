@@ -2,7 +2,7 @@
     "manifest_version":3,
     "version":"1.0",
     "name":"COS316 Final Project",
-    "permissions": ["activeTab", "storage"],
+    "permissions": ["activeTab", "storage", "http://localhost:55556/*"],
     "background": {
       "service_worker": "background.js"
     },

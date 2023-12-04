@@ -48,23 +48,27 @@ chrome.runtime.onMessage.addListener(
         timer.start();
         console.log("Timer started.");
       }
-
+      
       sendUsageUpdate(prevUrl, elapsedTime)
   }
 );
 
 function sendUsageUpdate(prevUrl, elapsedTime) {
-  let url = "/updateUsage?prevUrl=" + prevUrl + "&elapsedTime=" + elapsedTime;
-  
-  let data = {
-    type: "post",
-    success: function(responseData) {
+  let url = "http://localhost:55556/updateUsage?prevUrl=" + encodeURIComponent(prevUrl) + "&elapsedTime=" + encodeURIComponent(elapsedTime);
+
+  fetch(url, {
+      method: 'GET',
+      // headers: {
+      //     'Content-Type': 'application/json',
+      // },
+  })
+  .then(response => {
+      return response;
+  })
+  .then(responseData => {
       console.log('Data saved successfully:', responseData);
-    },
-    error: function(error) {
+  })
+  .catch(error => {
       console.error('Error saving data:', error);
-    },
-    url: url
-  };
-  $.ajax(data);
+  });
 }
