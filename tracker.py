@@ -16,4 +16,18 @@ def get_time(url):
     return tracker[url]
 
 def get_all_times():
+    for url, time in tracker.items():
+        tracker[url] = _convert_time(time)
     return tracker
+
+def _convert_time(time):
+
+    hours, remainder = divmod(time, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    if hours > 0:
+        return f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
+    elif minutes > 0:
+        return f"{int(minutes)}m {int(seconds)}s"
+    else:
+        return f"{int(seconds)}s"

@@ -1,18 +1,25 @@
 import sys
 import flask
 from flask_cors import CORS
-from tracker import track_time
+import tracker 
+import json
 # -----------------------------------------------------------------------
 
 app = flask.Flask(__name__)
-CORS(app)
+CORS(app, resources={r"*": {"origins": "*"}})
+
 
 @app.route("/updateUsage", methods=["GET"])
-def updateUsage():
+def update_usage():
     url = flask.request.args.get("prevUrl")
     elapsedTime = flask.request.args.get("elapsedTime")
-    track_time(url, float(elapsedTime))
+    tracker.track_time(url, float(elapsedTime))
     return "success"
+
+@app.route("/getUsage", methods=["GET"])
+def get_usage():
+    usage = tracker.get_all_times()
+    return flask.jsonify(usage) 
 
 if __name__ == "__main__":
     try:
@@ -20,3 +27,5 @@ if __name__ == "__main__":
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)
+
+

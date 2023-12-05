@@ -56,12 +56,7 @@ chrome.runtime.onMessage.addListener(
 function sendUsageUpdate(prevUrl, elapsedTime) {
   let url = "http://localhost:55556/updateUsage?prevUrl=" + encodeURIComponent(prevUrl) + "&elapsedTime=" + encodeURIComponent(elapsedTime);
 
-  fetch(url, {
-      method: 'GET',
-      // headers: {
-      //     'Content-Type': 'application/json',
-      // },
-  })
+  fetch(url, {method: 'GET',})
   .then(response => {
       return response;
   })
