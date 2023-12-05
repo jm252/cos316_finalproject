@@ -1,7 +1,7 @@
 import sys
 import flask
 from flask_cors import CORS
-
+from tracker import track_time
 # -----------------------------------------------------------------------
 
 app = flask.Flask(__name__)
@@ -11,9 +11,7 @@ CORS(app)
 def updateUsage():
     url = flask.request.args.get("prevUrl")
     elapsedTime = flask.request.args.get("elapsedTime")
-
-    print(url)
-    print(elapsedTime)
+    track_time(url, float(elapsedTime))
     return "success"
 
 if __name__ == "__main__":
