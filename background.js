@@ -30,6 +30,7 @@ chrome.runtime.onMessage.addListener(
         // stoptime and get time change
         elapsedTime = timer.stop();
         console.log("Timer stopped. elapsedTime: " + elapsedTime);
+        sendUsageUpdate(prevUrl, elapsedTime)
         
         // Access the URL from the message
         var url = request.url;
@@ -44,12 +45,11 @@ chrome.runtime.onMessage.addListener(
       } else if (request.type === "leftWindow") {
         elapsedTime = timer.stop();
         console.log("Timer stopped. elapsedTime: " + elapsedTime);
+        sendUsageUpdate(prevUrl, elapsedTime)
       } else if (request.type === "enteredWindow") {
         timer.start();
         console.log("Timer started.");
       }
-      
-      sendUsageUpdate(prevUrl, elapsedTime)
   }
 );
 
