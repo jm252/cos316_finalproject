@@ -16,9 +16,10 @@ def get_time(url):
     return tracker[url]
 
 def get_all_times():
+    display_tracker = tracker.copy()
     for url, time in tracker.items():
-        tracker[url] = _convert_time(time)
-    return tracker
+        display_tracker[url] = _convert_time(time)
+    return display_tracker
 
 def _convert_time(time):
 

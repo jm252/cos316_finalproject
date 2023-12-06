@@ -1,11 +1,11 @@
 function handleVisible() {
     // check if URL changes
     var newUrl = window.location.hostname;
-    chrome.storage.session.get(['url'], function(result) {
+    chrome.storage.local.get(['url'], function(result) {
         var url = result.url || "";
         // if url changed, send to background 
         if (newUrl !== url) {
-            chrome.storage.session.set({ 'url': newUrl }, function() {
+            chrome.storage.local.set({ 'url': newUrl }, function() {
                 // catching error
                 if (chrome.runtime.lastError) {
                     console.error(chrome.runtime.lastError);
