@@ -2,6 +2,8 @@
 tracker = {}
 
 def track_time(url, time):
+    if url == 'undefined':
+        exit()
     if url not in tracker:
         print("not in map")
         tracker[url] = time
