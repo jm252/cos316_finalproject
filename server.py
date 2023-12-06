@@ -19,6 +19,7 @@ def update_usage():
 @app.route("/getUsage", methods=["GET"])
 def get_usage():
     usage = tracker.get_all_times()
+    print(usage.to_string())
     return flask.jsonify(usage) 
 
 if __name__ == "__main__":

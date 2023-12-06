@@ -17,18 +17,19 @@ function updateTable(data) {
     // Clear existing content
     tableBody.innerHTML = '';
 
-    for (const [url, time] of Object.entries(data)) {
-        const row = document.createElement('tr');
+    console.log(data)
+    // for (const [url, time] of Object.entries(data)) {
+    //     const row = document.createElement('tr');
 
-        const domainCell = document.createElement('td');
-        domainCell.textContent = url;
+    //     const domainCell = document.createElement('td');
+    //     domainCell.textContent = url;
 
-        const timeCell = document.createElement('td');
-        timeCell.textContent = time;
+    //     const timeCell = document.createElement('td');
+    //     timeCell.textContent = time;
 
-        row.appendChild(domainCell);
-        row.appendChild(timeCell);
+    //     row.appendChild(domainCell);
+    //     row.appendChild(timeCell);
 
-        tableBody.appendChild(row);
-    }
+    //     tableBody.appendChild(row);
+    // }
 }
