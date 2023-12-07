@@ -1,30 +1,49 @@
 
-tracker = {}
+tracker_all = {}
+tracker_week = {}
+tracker_day = {}
 
 def track_time(url, time):
     if url == 'undefined':
         exit()
-    if url not in tracker:
-        print("not in map")
-        tracker[url] = time
-        print(tracker[url])
+    # if it's not in all, it's not in any - add to all
+    if url not in tracker_all:
+        tracker_all[url] = time
+        tracker_week[url] = time
+        tracker_day[url] = time
+    # if it's not in week, it's not in week or day - add to both
+    elif url not in tracker_week:
+        tracker_week[url] = time
+        tracker_day[url] = time
+    # if it's not in day, it's only not in day - add to day
+    elif url not in tracker_day:
+        tracker_day[url] = time
+    
+    # if it's already in all of them, update time in all 
     else:
-        print("already in map")
-        print("old time: " + str(tracker[url]))
-        tracker[url] += time 
-        print("new time: " + str(tracker[url]))
-
-def get_time(url):
-    return tracker[url]
+        tracker_all[url] += time 
+        tracker_week[url] += time 
+        tracker_day[url] += time 
 
 def get_all_times():
-    display_tracker = tracker.copy()
-    for url, time in tracker.items():
-        display_tracker[url] = _convert_time(time)
-    return display_tracker
+    display_tracker_all = {}
+    for url, time in tracker_all.items():
+        display_tracker_all[url] = _convert_time(time)
+    return display_tracker_all
+
+def get_week_times():
+    display_tracker_week = {}
+    for url, time in tracker_week.items():
+        display_tracker_week[url] = _convert_time(time)
+    return display_tracker_week
+
+def get_day_times():
+    display_tracker_day = {}
+    for url, time in tracker_day.items():
+        display_tracker_day[url] = _convert_time(time)
+    return display_tracker_day
 
 def _convert_time(time):
-
     hours, remainder = divmod(time, 3600)
     minutes, seconds = divmod(remainder, 60)
 
@@ -34,3 +53,13 @@ def _convert_time(time):
         return f"{int(minutes)}m {int(seconds)}s"
     else:
         return f"{int(seconds)}s"
+    
+def clear_week():
+    global tracker_week
+    tracker_week.clear()
+    return
+
+def clear_day():
+    global tracker_day
+    tracker_day.clear()
+    return
