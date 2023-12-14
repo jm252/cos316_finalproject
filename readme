@@ -1,0 +1,19 @@
+To Compile and Run our Extension:
+
+1) Install dependencies: Python, Flask, Flask_cors, schedule 
+
+2) cd into appropriate directory and run "python server.py"
+
+3) If present, delete __pycache__ folder (there is a command to never generate this, but for simplicity you can manually delete it)
+
+4) Open Google Chrome 
+
+5) Click on "Extensions" in the top right corner followed by "Manage Extensions"
+
+6) Ensure "Developer Mode" is turned on (top right corner)
+
+7) Click "load unpacked" and choose our repository folder
+
+8) The extension will now appear in your list of extensions under the name "COS316 Final Project." 
+
+9) Open our extenstion to view logged times

@@ -2,7 +2,6 @@ import sys
 import flask
 from flask_cors import CORS
 import tracker
-import json
 import time
 import schedule
 from threading import Thread
@@ -41,9 +40,6 @@ def get_usage_day():
 
 schedule.every().day.at("00:00").do(tracker.clear_day)
 schedule.every().sunday.at("00:00").do(tracker.clear_week)
-# schedule.every().hour.at(":58").do(tracker.clear_day)
-# schedule.every().hour.at(":55").do(tracker.clear_week)
-
 
 def run_scheduling():
     while True:
