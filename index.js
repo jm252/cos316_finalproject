@@ -21,15 +21,14 @@ function updateTable(data, id) {
 }
 
 function getUsageAll() {
-        url = "http://localhost:55556/getUsageAll"
-        fetch(url, {method: 'GET',})
-        .then(response => response.json())
-        .then(data => updateTable(data, 'contentAll'))
-        .catch(error => {
-        console.error('Error fetching data:', error);
-        // Handle errors as needed
-        });
-    }
+    url = "http://localhost:55556/getUsageAll"
+    fetch(url, {method: 'GET',})
+    .then(response => response.json())
+    .then(data => updateTable(data, 'contentAll'))
+    .catch(error => {
+    console.error('Error fetching data:', error);
+    });
+}
 
 function getUsageWeek() {
     url = "http://localhost:55556/getUsageWeek"
@@ -38,7 +37,6 @@ function getUsageWeek() {
     .then(data => updateTable(data, 'contentWeek'))
     .catch(error => {
     console.error('Error fetching data:', error);
-    // Handle errors as needed
     });
 }
 
@@ -49,7 +47,6 @@ function getUsageDay() {
     .then(data => updateTable(data, 'contentDay'))
     .catch(error => {
     console.error('Error fetching data:', error);
-    // Handle errors as needed
     });
 }
 

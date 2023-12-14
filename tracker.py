@@ -26,19 +26,19 @@ def track_time(url, time):
         tracker_day[url] += time 
 
 def get_all_times():
-    display_tracker_all = {}
+    display_tracker_all = dict(sorted(tracker_all.items(), key=lambda item: item[1]))
     for url, time in tracker_all.items():
         display_tracker_all[url] = _convert_time(time)
     return display_tracker_all
 
 def get_week_times():
-    display_tracker_week = {}
+    display_tracker_week = dict(sorted(tracker_week.items(), key=lambda item: item[1]))
     for url, time in tracker_week.items():
         display_tracker_week[url] = _convert_time(time)
     return display_tracker_week
 
 def get_day_times():
-    display_tracker_day = {}
+    display_tracker_day = dict(sorted(tracker_day.items(), key=lambda item: item[1]))
     for url, time in tracker_day.items():
         display_tracker_day[url] = _convert_time(time)
     return display_tracker_day
